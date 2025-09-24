@@ -155,7 +155,7 @@ body {
 
 /* Estilos para las secciones de contenido (fondo negro) */
 .content-section {
-    padding: 80px 0; /* Espaciado interno arriba y abajo */
+    padding: 40px 0; /* Espaciado interno arriba y abajo */
     text-align: center;
     min-height: 50vh; /* Altura mínima para generar scroll */
     position: relative; /* Asegura que se posicione correctamente en el flujo */
@@ -167,5 +167,39 @@ body {
 .content-section h2 {
     font-size: 2.5em;
     margin-bottom: 30px;
-    color: #4682b4; /* Color de los títulos sobre fondo negro */
+    color:#FB3260; /* Color de los títulos sobre fondo negro */
+}
+
+/* --- Estilos específicos para la sección "Sobre la Asignatura" --- */
+.content-section .right-aligned-content {
+    /* Para que el bloque de contenido ocupe la mitad derecha de la pantalla
+       y el texto se justifique a la derecha dentro de ese bloque. */
+    width: 100%; /* Ocupa todo el ancho del .container */
+    max-width: 600px; /* Limita el ancho del texto para que no sea demasiado largo */
+    margin-left: auto; /* ¡CLAVE! Empuja el div .right-aligned-content hacia la derecha */
+    text-align: right; /* Justifica el texto dentro de este div a la derecha */
+}
+
+/* Color gris claro para los textos de reflexión y el enlace */
+.content-section .reflection-text,
+.content-section .wiki-link {
+    color: #D9D9D9; /* El color gris claro que pediste */
+    font-size: 1.2em; /* Puedes ajustar el tamaño si lo deseas */
+    line-height: 1.6; /* Mejora la legibilidad de párrafos largos */
+    margin-top: 20px; /* Espacio arriba del párrafo */
+    margin-bottom: 20px; /* Espacio abajo del párrafo */
+}
+
+.content-section .wiki-link a {
+    color: #D9D9D9; /* También el link es gris */
+    text-decoration: none; /* Quita el subrayado por defecto */
+    font-weight: 500; /* Un poco más de grosor para el link */
+    border-bottom: 1px solid #D9D9D9; /* Subrayado sutil */
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease; /* Transición para hover */
+}
+
+.content-section .wiki-link a:hover {
+    color:#FB3260; /* Azul acero al pasar el ratón */
+    border-color: #FB3260; /* Cambio de color del subrayado */
 }
