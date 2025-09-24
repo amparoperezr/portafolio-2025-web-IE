@@ -1,5 +1,4 @@
 /* Box-sizing universal para asegurar que padding y border se incluyan en el ancho/alto */
-/* Esto ayuda a prevenir desbordamientos y barras de scroll horizontal. */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -15,7 +14,6 @@ body {
     font-family: 'Alegreya Sans', sans-serif;
     margin: 0;
     padding: 0;
-    /* box-sizing ya aplicado a nivel universal, pero se mantiene aquí por claridad */
     background-color: #000000; /* Fondo negro para el resto del sitio */
     color: #f0f8ff; /* Color de texto general blanco/claro para el fondo negro */
     position: relative; /* Base para algunos posicionamientos */
@@ -25,31 +23,31 @@ body {
 .container {
     max-width: 1440px; /* Ancho máximo para el contenido */
     margin: 0 auto;
-    padding: 0 20px; /* Padding a los lados dentro del contenedor */
+    padding: 0 60px; /* ¡AJUSTADO! Más padding lateral para crear más margen a los costados */
 }
 
 /* --- P5.js Intro Section --- */
-/* Esta sección contiene la animación de P5.js */
+/* Esta sección contiene la animación de P5.js y se mantiene en el fondo */
 #intro-section {
     position: fixed; /* Fija la intro en el viewport */
     top: 0;
     left: 0;
-    width: 100vw; /* 100% del ancho del viewport */
-    height: 100vh; /* 100% de la altura del viewport */
-    overflow: hidden; /* Oculta cualquier desbordamiento dentro de esta sección */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
     background-color: #f0f8ff; /* Color de fondo de respaldo si P5.js no carga */
     z-index: -1; /* Coloca la intro-section detrás de todo lo demás, pero visible */
 }
 
 /* Estilos específicos para el canvas de P5.js dentro de la intro-section */
 #intro-section canvas {
-    display: block; /* Elimina espacio extra debajo del canvas */
-    position: absolute; /* Posiciona el canvas dentro de intro-section */
+    display: block;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Ocupa todo el ancho de su padre (#intro-section) */
-    height: 100%; /* Ocupa toda la altura de su padre (#intro-section) */
-    z-index: 0; /* Dentro de intro-section, pero detrás de #p5-overlay si tuviera contenido */
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 /* Overlay para posibles textos o elementos que quieras poner encima de P5.js */
@@ -68,34 +66,30 @@ body {
    y que la barra de menú suba desde abajo y el contenido negro aparezca. */
 #scroll-pusher {
     height: 100vh;
-    background-color: #000000; /* ¡CLAVE! Fondo negro para cubrir P5.js al scrollear */
-    position: relative; /* Necesario para que el z-index funcione */
+    background-color: #000000; /* Fondo negro para cubrir P5.js al scrollear */
+    position: relative;
     z-index: 5; /* Un z-index mayor que intro-section (-1) pero menor que el menú (1000) */
 }
 
-/* --- Estilos de la Barra de Menú --- */
-/* --- Estilos de la Barra de Menú --- */
+/* --- Barra de Menú --- */
 #main-menu {
     width: 100%;
     height: 116px;
     background-color: white;
     display: flex;
     align-items: center;
-    position: sticky; /* ¡CLAVE! Permite que siga el scroll y se pegue. */
+    position: sticky; /* Permite que siga el scroll y se pegue. */
     top: 0; /* Se pegará en la parte superior. */
-    /* Eliminamos 'bottom: 0;' y el 'transform' inicial para que 'sticky' funcione. */
-    margin-top: calc(100vh - 116px); /* ¡CLAVE! Empuja la barra hacia abajo inicialmente. */
+    margin-top: calc(100vh - 116px); /* Empuja la barra hacia abajo inicialmente. */
     z-index: 1000;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     transition: box-shadow 0.3s ease-out; /* Ahora solo transicionamos la sombra */
 }
 
-/* La clase .sticky solo se usará para el cambio de sombra si lo deseas.
-   El 'top: 0' ya lo gestiona el position: sticky */
+/* La clase .sticky solo se usará para el cambio de sombra si lo deseas. */
 #main-menu.sticky {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra hacia abajo cuando está arriba */
 }
-
 
 /* Contenido dentro de la barra de menú para centrar y distribuir */
 .menu-content {
@@ -150,24 +144,24 @@ body {
 }
 
 .right-section ul li a:hover {
-    color: #4682b4; /* Azul acero al pasar el ratón */
+    color:  #FB3260; /*colores barra menu*/
 }
 
 /* Estilos para las secciones de contenido (fondo negro) */
 .content-section {
-    padding: 40px 0; /* Espaciado interno arriba y abajo */
+    padding: 80px 0; /* AJUSTADO: Menos padding superior para subir el contenido */
     text-align: center;
-    min-height: 50vh; /* Altura mínima para generar scroll */
-    position: relative; /* Asegura que se posicione correctamente en el flujo */
-    z-index: 20; /* Por encima de #scroll-pusher y #intro-section */
-    /* El background-color ya lo maneja el body con #000000 */
-     background-color: #000000;
+    min-height: 50vh;
+    position: relative;
+    z-index: 20;
+    background-color: #000000; /* Asegura que estas secciones siempre tengan fondo negro */
 }
 
 .content-section h2 {
     font-size: 2.5em;
+    margin-top: 0; 
     margin-bottom: 30px;
-    color:#FB3260; /* Color de los títulos sobre fondo negro */
+    color: #FB3260; /* AJUSTADO: Nuevo color para los títulos de las secciones */
 }
 
 /* --- Estilos específicos para la sección "Sobre la Asignatura" --- */
@@ -175,31 +169,140 @@ body {
     /* Para que el bloque de contenido ocupe la mitad derecha de la pantalla
        y el texto se justifique a la derecha dentro de ese bloque. */
     width: 100%; /* Ocupa todo el ancho del .container */
-    max-width: 600px; /* Limita el ancho del texto para que no sea demasiado largo */
+    max-width: 500px; /* AJUSTADO: Hace el contenido un poco más estrecho para más margen */
     margin-left: auto; /* ¡CLAVE! Empuja el div .right-aligned-content hacia la derecha */
+    margin-top: -600px;
     text-align: right; /* Justifica el texto dentro de este div a la derecha */
 }
 
 /* Color gris claro para los textos de reflexión y el enlace */
 .content-section .reflection-text,
 .content-section .wiki-link {
-    color: #D9D9D9; /* El color gris claro que pediste */
-    font-size: 1.2em; /* Puedes ajustar el tamaño si lo deseas */
-    line-height: 1.6; /* Mejora la legibilidad de párrafos largos */
-    margin-top: 20px; /* Espacio arriba del párrafo */
-    margin-bottom: 20px; /* Espacio abajo del párrafo */
+    color: #D9D9D9; 
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .content-section .wiki-link a {
     color: #D9D9D9; /* También el link es gris */
     text-decoration: none; /* Quita el subrayado por defecto */
-    font-weight: 500; /* Un poco más de grosor para el link */
+    font-weight: 500;
     border-bottom: 1px solid #D9D9D9; /* Subrayado sutil */
     padding-bottom: 2px;
-    transition: color 0.3s ease, border-color 0.3s ease; /* Transición para hover */
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .content-section .wiki-link a:hover {
-    color:#FB3260; /* Azul acero al pasar el ratón */
-    border-color: #FB3260; /* Cambio de color del subrayado */
+    color: #FB3260; /* AJUSTADO: Nuevo color al pasar el ratón */
+    border-color: #FB3260; /* Cambio de color del subrayado también */
+}
+
+/* --- Estilos para la sección "Encargos" --- */
+
+/* Espaciado general entre las tareas */
+.task-item {
+    display: flex; /* Para poner el texto y la imagen uno al lado del otro */
+    align-items: center; /* Centra verticalmente el contenido dentro de cada tarea */
+    gap: 50px; /* Espacio entre el texto y la imagen */
+    margin-bottom: 80px; /* Espacio entre una tarea y la siguiente */
+    padding-top: 40px; /* Espacio antes de cada tarea, después del título "Encargos" */
+}
+
+/* Estilos para el bloque de texto dentro de cada tarea */
+.task-text-content {
+    flex: 1; /* Ocupa el espacio restante en el layout flexible */
+    max-width: 50%; /* Limita el ancho del texto a la mitad */
+}
+
+/* Estilos para el bloque de imagen/miniatura */
+.task-media-content {
+    flex: 1; /* Ocupa el espacio restante en el layout flexible */
+    display: flex; /* Para centrar la imagen si es más pequeña */
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    max-width: 50%; /* Limita el ancho de la imagen a la mitad */
+}
+
+.task-media-content img {
+    width: 100%; /* La imagen ocupa todo el ancho de su contenedor */
+    max-width: 450px; /* Tamaño máximo para la miniatura (ajusta a tu gusto) */
+    height: auto;
+    display: block;
+    border: 2px solid #FB3260; /* Borde del color principal */
+    border-radius: 8px; /* Bordes redondeados para las miniaturas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-media-content img:hover {
+    transform: scale(1.02); /* Pequeño zoom al pasar el ratón */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Subtítulos de las tareas (Tarea 1, Tarea 2, etc.) */
+.task-subtitle {
+    font-size: 1.8em;
+    color: #FB3260; /* Color para los subtítulos */
+    margin-bottom: 15px;
+    margin-top: 0; /* Elimina margen superior por defecto */
+}
+
+/* Texto descriptivo de las tareas */
+.task-description {
+    color: #D9D9D9; /* Gris claro para el texto */
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Enlaces de P5.js */
+.task-link a {
+    color: #D9D9D9; /* Gris claro para el link */
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #D9D9D9;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.task-link a:hover {
+    color: #FB3260; /* Color principal al pasar el ratón */
+    border-color: #FB3260;
+}
+
+
+/* --- Modificaciones para la alineación Alterna --- */
+
+/* Tareas con contenido a la izquierda y media a la derecha */
+.left-aligned-task .task-text-content {
+    text-align: left; /* Justifica el texto a la izquierda */
+}
+
+/* Tareas con contenido a la derecha y media a la izquierda */
+.right-aligned-task {
+    flex-direction: row-reverse; /* ¡CLAVE! Invierte el orden de los elementos */
+}
+.right-aligned-task .task-text-content {
+    text-align: right; /* Justifica el texto a la derecha */
+}
+
+/* Estilos responsivos (opcional pero muy recomendable) */
+@media (max-width: 768px) {
+    .task-item {
+        flex-direction: column; /* Apila el texto y la imagen en pantallas pequeñas */
+        text-align: center !important; /* Centra el texto en pantallas pequeñas */
+    }
+
+    .task-text-content, .task-media-content {
+        max-width: 100%; /* Ocupan todo el ancho disponible */
+        text-align: center !important; /* Centra el texto */
+    }
+    .task-text-content p, .task-text-content h3 {
+        text-align: center !important; /* Asegura que el texto interno también se centre */
+    }
+    .task-item .task-media-content img {
+        max-width: 80%; /* Reduce el tamaño de la imagen en móviles */
+    }
 }
