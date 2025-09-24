@@ -1,15 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi sitio web Amparo</title>
+    <title>Amparo Pérez - Portafolio</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="p5-animation.js"></script>
 </head>
 <body>
-    <h1>Imagen Escrita</h1>
-    <h2>Portafolio 2025</h2>
-    <h3>Amparo Pérez</h3>
-    
+
+    <div id="intro-section">
+        <div id="p5-overlay">
+            </div>
+    </div>
+
+    <nav id="main-menu" class="initial-bottom"> <div class="menu-content container">
+            <div class="left-section">
+                <h2 class="title-animation">Imagen Escrita</h2>
+                <p class="portfolio-year">Portafolio 2025</p>
+                <p class="author-name">Amparo Pérez</p>
+            </div>
+            <div class="right-section">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre-asignatura">Sobre la Asignatura</a></li>
+                    <li><a href="#encargos">Encargos</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="scroll-pusher"></div> <section id="sobre-asignatura" class="content-section">
+        </section>
+    <script src="sticky-menu.js"></script>
+
 </body>
 </html>
