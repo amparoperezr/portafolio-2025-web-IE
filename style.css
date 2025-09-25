@@ -308,6 +308,14 @@ main {
     border-color: var(--color-sobre-mi);
 }
 
+/* Estilos para el título de las secciones (para que sean consistentes) */
+.title-sobre-asignatura,
+.title-encargos,
+.title-sobre-mi {
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
 /* Estilos de la nueva sub-sección */
 .experimentacion-section {
     width: 100%;
@@ -395,7 +403,19 @@ main {
     color: var(--color-sobre-mi);
 }
 
+/* Estilos responsivos */
 @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .menu-content { flex-direction: column; text-align: center; }
+    .left-section h2, .left-section p { text-align: center; }
+    .right-section ul { gap: 20px; justify-content: center; margin-top: 10px; }
+    .content-section .content-wrapper { max-width: 100%; }
+    .right-aligned-content { margin: 0; text-align: center; }
+    .task-item, .task-item.right-aligned-task { flex-direction: column; }
+    .task-text-content, .task-media-content { max-width: 100%; text-align: center; }
+    .task-media-content a { width: 200px; height: 200px; }
+    .task-link a { text-align: center; display: inline-block; }
+    
     .sobre-mi-container { gap: 40px; }
     .projects-grid { flex-wrap: wrap; justify-content: center; }
     .project-item { min-width: 80px; }
