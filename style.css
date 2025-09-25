@@ -320,7 +320,7 @@ main {
 .experimentacion-section {
     width: 100%;
     max-width: 900px;
-    margin-left: 0;
+    margin-left: 0 auto;
 }
 
 .experimentacion-subtitle {
@@ -356,9 +356,12 @@ main {
 }
 
 .projects-container {
-    display: none; /* Oculto por defecto */
+    display: none; /* Se mantiene oculto por defecto */
     overflow: hidden;
     transition: all 0.5s ease-in-out;
+    max-width: 900px; /* Le da el ancho que ya estaba en otra parte del código */
+    margin: 0 auto; /* ¡CLAVE! Esto centra el contenedor en la página */
+    padding: 0 20px; /* Añade un pequeño margen interno para evitar que los círculos toquen los bordes */
 }
 
 .projects-grid {
