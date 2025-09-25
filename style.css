@@ -1,9 +1,12 @@
+/* Variables para colores (hace el código más limpio) */
 :root {
     --color-sobre-asignatura: #E9C37A;
     --color-encargos: #FC9248;
+    --color-tarea-1: #E9C37A;
+    --color-tarea-2: #FC9248;
     --color-tarea-3: #FC6E3E;
     --color-tarea-4: #FB3260;
-    --color-sobre-mi: #E9C37A; /* Asignado el mismo color que la primera sección */
+    --color-sobre-mi: #E9C37A;
     --color-texto-claro: #D9D9D9;
 }
 
@@ -44,14 +47,6 @@ body {
     overflow: hidden;
     background-color: #f0f8ff;
     z-index: -1;
-}
-
-/* --- Elemento "empujador" del scroll --- */
-#scroll-pusher {
-    height: 100vh;
-    background-color: #000000;
-    position: relative;
-    z-index: 5;
 }
 
 /* --- Barra de Menú --- */
@@ -105,44 +100,25 @@ main {
     background-color: #000000;
 }
 
-.content-section .content-wrapper {
-    max-width: 500px;
-}
-
-.content-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    margin-top: 0;
-}
-
 /* Títulos con colores específicos */
 .title-sobre-asignatura { color: var(--color-sobre-asignatura); }
 .title-encargos { color: var(--color-encargos); }
 .title-sobre-mi { color: var(--color-sobre-mi); }
 
 /* Alineación de las secciones */
-.right-aligned-section .content-wrapper {
+.right-aligned-content {
     margin-left: auto;
     text-align: right;
+    width: 100%;
+    max-width: 500px;
 }
 
-.left-aligned-section .content-wrapper {
-    margin-right: auto;
-    text-align: left;
-}
-
+/* Estilos para los textos de reflexión y descripciones (tamaño más pequeño) */
 .reflection-text, .section-description, .task-description {
     color: var(--color-texto-claro);
-    font-size: 1.2em;
+    font-size: 1.1em; /* Reducido a 1.1em para que sea más pequeño */
     line-height: 1.6;
 }
-
-.section-description { margin-bottom: 60px; }
-
-/* Enlaces de secciones (cambian de color al pasar el mouse) */
-.link-sobre-asignatura:hover { color: var(--color-sobre-asignatura); border-color: var(--color-sobre-asignatura); }
-.link-encargos:hover { color: var(--color-encargos); border-color: var(--color-encargos); }
-.link-sobre-mi:hover { color: var(--color-sobre-mi); border-color: var(--color-sobre-mi); }
 
 /* Estilos de las Tareas (alternadas) */
 .task-item {
@@ -150,7 +126,6 @@ main {
     align-items: center;
     gap: 50px;
     margin-bottom: 80px;
-    padding-top: 40px;
 }
 
 .task-item.right-aligned-task {
@@ -161,8 +136,11 @@ main {
     flex: 1;
 }
 
-.task-item .task-media-content {
-    flex: 1;
+.task-media-content {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,9 +148,8 @@ main {
 
 .task-media-content a {
     display: block;
-    width: 400px;
-    height: 400px;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
@@ -183,143 +160,13 @@ main {
     height: 100%;
     object-fit: cover;
     display: block;
-    border: 2px solid transparent; /* Borde transparente por defecto */
+    border: 2px solid transparent;
     transition: border-color 0.3s ease;
 }
 
-/* Colores de borde específicos para cada tarea */
-.task-img-t1:hover { border-color: var(--color-sobre-asignatura); }
-.task-img-t2:hover { border-color: var(--color-encargos); }
-.task-img-t3:hover { border-color: var(--color-tarea-3); }
-.task-img-t4:hover { border-color: var(--color-tarea-4); }
-
-.task-subtitle { font-size: 1.8em; color: var(--color-texto-claro); margin: 0 0 15px; }
-.task-link a {
-    color: var(--color-texto-claro);
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid var(--color-texto-claro);
-    padding-bottom: 2px;
-    transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-/* --- Estilos Responsivos --- */
-@media (max-width: 768px) {
-    .container { padding: 0 20px; }
-    .menu-content { flex-direction: column; text-align: center; }
-    .left-section h2, .left-section p { text-align: center; }
-    .right-section ul { gap: 20px; justify-content: center; margin-top: 10px; }
-    .content-section .content-wrapper { max-width: 100%; }
-    .right-aligned-section .content-wrapper,
-    .left-aligned-section .content-wrapper {
-        margin: 0;
-        text-align: center;
-    }
-    .task-item, .task-item.right-aligned-task { flex-direction: column; }
-    .task-text-content, .task-media-content { max-width: 100%; text-align: center; }
-    .task-media-content a { width: 100%; height: auto; }
-    .task-link a { text-align: center; display: inline-block; }
-}
-
-/* Definición de los colores de los títulos para el portafolio */
-.title-sobre-asignatura {
-    color: #E9C37A;
-}
-
-/* Alineación al lado derecho para la sección "Sobre la Asignatura" */
-.right-aligned-content {
-    text-align: right;
-    width: 100%;
-    max-width: 500px; /* Ancho máximo para el texto */
-    margin-left: auto; /* Esto empuja el contenedor a la derecha */
-}
-
-/* Estilos para el enlace de la Wiki */
-.link-sobre-asignatura {
-    color: #D9D9D9; /* Color de texto por defecto */
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid #D9D9D9;
-    padding-bottom: 2px;
-    transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Efecto al pasar el mouse: el color del enlace se pone del mismo color que el título */
-.link-sobre-asignatura:hover {
-    color: #E9C37A;
-    border-color: #E9C37A;
-}
-
-/* Variables para los colores de los títulos y bordes */
-:root {
-    --color-encargos: #FC9248;
-    --color-tarea-1: #E9C37A;
-    --color-tarea-2: #FC9248;
-    --color-tarea-3: #FC6E3E;
-    --color-tarea-4: #FB3260;
-    --color-texto-claro: #D9D9D9;
-}
-
-/* Estilos para el título de la sección */
-.title-encargos {
-    color: var(--color-encargos);
-    text-align: left;
-}
-
-/* Descripción de la sección */
-.section-description {
-    text-align: left;
-    color: var(--color-texto-claro);
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 60px;
-}
-
-/* Contenedor de cada tarea para usar Flexbox */
-.task-item {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 80px;
-}
-
-/* Regla para invertir el orden de la tarea 2 y 4 */
-.task-item.right-aligned-task {
-    flex-direction: row-reverse;
-}
-
-/* Estilos para las imágenes */
-.task-media-content {
-    flex-shrink: 0;
-    width: 400px; /* Ancho fijo de la imagen */
-    height: 400px; /* Altura fija para que la imagen sea cuadrada */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.task-media-content a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-}
-
-.task-media-content img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajusta la imagen sin deformarla */
-    display: block;
-    border: 2px solid transparent; /* Borde transparente por defecto */
-    transition: border-color 0.3s ease;
-}
-
-/* Efecto al pasar el mouse sobre la imagen: cambio de borde y sombra */
+/* Efectos al pasar el mouse */
 .task-media-content a:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -329,22 +176,13 @@ main {
 .task-img-t3:hover { border-color: var(--color-tarea-3); }
 .task-img-t4:hover { border-color: var(--color-tarea-4); }
 
-/* Estilos de los subtítulos de las tareas */
+/* Estilos para los subtítulos y enlaces de la tarea */
 .task-subtitle {
     font-size: 1.8em;
-    color: var(--color-encargos);
+    color: #F0F8FF;
     margin: 0 0 15px;
 }
 
-/* Estilos para la descripción y el enlace de la tarea */
-.task-description {
-    color: var(--color-texto-claro);
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-/* Enlaces de tareas con efecto hover */
 .task-link a {
     color: var(--color-texto-claro);
     text-decoration: none;
@@ -359,103 +197,16 @@ main {
     border-color: var(--color-encargos);
 }
 
-/* --- Sección "Encargos" --- */
-
-/* Estilos para el título de la sección */
-.title-encargos {
-    color: #FC9248; /* Color naranja según tu petición */
-    text-align: left; /* Alineación a la izquierda para toda la sección */
-}
-
-/* Descripción de la sección */
-.section-description {
-    text-align: left;
-    color: #D9D9D9;
-    font-size: 1.2em;
-    line-height: 1.6;
-    margin-bottom: 60px;
-}
-
-/* Contenedor de cada tarea para usar Flexbox */
-.task-item {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 80px;
-}
-
-/* Regla para alternar las tareas: invierte el orden del texto y la imagen */
-.task-item.right-aligned-task {
-    flex-direction: row-reverse;
-}
-
-/* Estilos para los subtítulos (h3) */
-.task-subtitle {
-    color: #F0F8FF; /* Blanco */
-    font-size: 1.8em;
-    font-style: italic; /* Itálica */
-    margin: 0 0 15px;
-}
-
-/* Estilos para las imágenes */
-.task-media-content {
-    flex-shrink: 0;
-    width: 200px; /* Ancho de 200px como pediste */
-    height: 200px; /* Altura de 200px */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.task-media-content a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-}
-
-.task-media-content img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border: 2px solid transparent; /* Borde transparente por defecto */
-    transition: border-color 0.3s ease;
-}
-
-/* Efectos al pasar el mouse */
-.task-media-content a:hover {
-    transform: scale(1.05); /* Ligeramente más grande */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-}
-
-/* Colores de borde específicos para cada tarea */
-.task-img-t1:hover { border-color: #E9C37A; }
-.task-img-t2:hover { border-color: #FC9248; }
-.task-img-t3:hover { border-color: #FC6E3E; }
-.task-img-t4:hover { border-color: #FB3260; }
-
-/* Estilos para la descripción y el enlace de la tarea */
-.task-description {
-    color: #D9D9D9;
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.task-link a {
-    color: #D9D9D9;
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: 1px solid #D9D9D9;
-    padding-bottom: 2px;
-    transition: color 0.3s ease, border-color 0.3s ease;
-}
-
-.task-link a:hover {
-    color: #FC9248;
-    border-color: #FC9248;
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .menu-content { flex-direction: column; text-align: center; }
+    .left-section h2, .left-section p { text-align: center; }
+    .right-section ul { gap: 20px; justify-content: center; margin-top: 10px; }
+    .content-section .content-wrapper { max-width: 100%; }
+    .right-aligned-content { margin: 0; text-align: center; }
+    .task-item, .task-item.right-aligned-task { flex-direction: column; }
+    .task-text-content, .task-media-content { max-width: 100%; text-align: center; }
+    .task-media-content a { width: 200px; height: 200px; }
+    .task-link a { text-align: center; display: inline-block; }
 }
