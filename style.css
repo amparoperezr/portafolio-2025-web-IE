@@ -269,7 +269,7 @@ main {
 .task-img-t3:hover { border-color: var(--color-tarea-3); }
 .task-img-t4:hover { border-color: var(--color-tarea-4); }
 
-/* Asegúrate de que la transición también esté en el selector principal */
+/* transición también esté en el selector principal */
 .task-media-content a:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
