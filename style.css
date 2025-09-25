@@ -37,7 +37,7 @@ body {
     padding: 0 60px;
 }
 
-/* --- Sección de P5.js --- */
+/*Sección de P5.js  */
 #intro-section {
     position: fixed;
     top: 0;
@@ -49,7 +49,7 @@ body {
     z-index: -1;
 }
 
-/* --- Barra de Menú --- */
+/* Barra de Menú */
 #main-menu {
     width: 100%;
     height: 116px;
@@ -86,7 +86,7 @@ body {
 }
 .right-section ul li a:hover { color: #FB3260; }
 
-/* --- Secciones de Contenido --- */
+/*  Secciones de Contenido */
 main {
     position: relative;
     z-index: 20;
@@ -177,11 +177,27 @@ main {
 .task-img-t4:hover { border-color: var(--color-tarea-4); }
 
 /* Estilos para los subtítulos y enlaces de la tarea */
+/* --- Secciones de Contenido (Ajuste de tamaños y estilos) --- */
+
+.content-section h2 {
+    font-size: 2.2em; /* Títulos principales de las secciones */
+    margin-bottom: 20px;
+}
+
+/* Títulos con colores específicos */
+.title-sobre-asignatura { color: var(--color-sobre-asignatura); }
+.title-encargos { color: var(--color-encargos); }
+.title-sobre-mi { color: var(--color-sobre-mi); }
+
+/* Estilos para los subtítulos y enlaces de la tarea */
 .task-subtitle {
-    font-size: 1.8em;
+    font-size: 1.5em; /* Tamaño reducido para que parezca un subtítulo */
     color: #F0F8FF;
     margin: 0 0 15px;
+    font-style: italic; /* Texto en itálica */
 }
+
+/* El resto para las tareas puede mantenerse igual */
 
 .task-link a {
     color: var(--color-texto-claro);
@@ -209,4 +225,52 @@ main {
     .task-text-content, .task-media-content { max-width: 100%; text-align: center; }
     .task-media-content a { width: 200px; height: 200px; }
     .task-link a { text-align: center; display: inline-block; }
+}
+
+/* --- Arreglos de Estilo para la Sección "Sobre la Asignatura" --- */
+
+.wiki-link a {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.wiki-link a:hover {
+    color: var(--color-sobre-asignatura);
+}
+
+/* --- Efectos de Texto en Títulos --- */
+
+.content-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* Sombra de texto */
+}
+
+/* --- Efectos de Imagen en Miniaturas de Tareas --- */
+
+.task-media-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease, filter 0.3s ease; /* Añadimos 'filter' a la transición */
+    filter: grayscale(100%); /* Filtro inicial de escala de grises */
+}
+
+.task-media-content a:hover img {
+    filter: none; /* Quitamos el filtro al pasar el mouse */
+}
+
+/* Los colores de borde específicos para cada tarea se mantienen */
+.task-img-t1:hover { border-color: var(--color-tarea-1); }
+.task-img-t2:hover { border-color: var(--color-tarea-2); }
+.task-img-t3:hover { border-color: var(--color-tarea-3); }
+.task-img-t4:hover { border-color: var(--color-tarea-4); }
+
+/* Asegúrate de que la transición también esté en el selector principal */
+.task-media-content a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
